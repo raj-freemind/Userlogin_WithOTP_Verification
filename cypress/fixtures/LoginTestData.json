@@ -1,0 +1,14 @@
+[
+    {
+        "Test_case_name": "Valid Username and Passport",
+        "username": "manmohan@varosatech.com",
+        "passport": "Myhouse@124",
+        "expect_result": "dashboard"
+    },
+    {
+        "Test_case_name": "InValid Username and Passport",
+        "username": "manmohan@varosatech.com",
+        "passport": "12",
+        "expect_result": "Successfuly Inter the webpotal"
+    }
+]

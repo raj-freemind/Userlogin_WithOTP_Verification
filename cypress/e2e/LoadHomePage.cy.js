@@ -1,10 +1,33 @@
-describe('Load Home Paage', () => {
-  it('passes', () => {
-    cy.visit('https://gumpadmindev.genesesolution.com/')
-    cy.title().should('eq', 'GUMP - Admin')
-    cy.get('.mb-5 > .ant-input').type("manmohan@varosatech.com")
-    cy.get('.ant-input-affix-wrapper > .ant-input').type("Myhouse@124")
-    cy.get('.ant-btn').click()
-    
-  })
+
+import Homepage from "../PageObject/Homepage.cy"
+import LoginTestData from "../fixtures/LoginTestData.json"
+
+
+describe('Load Home Page', () => {
+    it('successfully loads', () => {
+        const log = new Homepage()
+        log.visit()
+        cy.title().should('eq', 'GUMP - Admin')
+    })
 })
+
+describe('Login to the system', () => {
+    const log = new Homepage()
+
+    beforeEach(() => {
+        log.visit()
+        
+    })
+    //TestData has a test case data and we can added other test scenario
+    LoginTestData.forEach((item) => {
+        it(item.Test_case_name, () => {
+            log.SendEmail(item.username)
+            log.SendPassport(item.passport)
+            log.AddClick()
+            
+            //log.VerifyaddResult(item.expect_result)
+        })
+
+    })
+})
+
